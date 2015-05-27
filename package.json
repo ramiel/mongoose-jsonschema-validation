@@ -2,6 +2,7 @@
   "name": "mongoose-jsonschema-validation",
   "version": "0.0.1",
   "description": "Validate your mongoose models through a JSON schema",
+  "repository": "https://github.com/ramiel/mongoose-jsonschema-validation.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
