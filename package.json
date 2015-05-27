@@ -1,7 +1,7 @@
 {
   "name": "mongoose-jsonschema-validation",
   "version": "0.0.1",
-  "description": "Validate your models through a JSON schema",
+  "description": "Validate your mongoose models through a JSON schema",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +10,8 @@
     "mongoose"
   ],
   "author": "Fabrizio Ruggeri <fabrizio.ruggeri@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tv4": "^1.1.9"
+  }
 }
