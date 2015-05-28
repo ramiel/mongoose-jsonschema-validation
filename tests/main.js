@@ -20,7 +20,7 @@ describe('Loading plugin', function(){
 
     describe('With a Person schema', function(){
 
-        it('apply the plugin with schema path (absolute)', function(){
+        it('apply the plugin with schema absolute path works', function(){
 
             var PersonSchema = new Schema({
                 name: String
@@ -34,7 +34,7 @@ describe('Loading plugin', function(){
 
         });
 
-        it('apply the plugin with schema path (relative)', function(){
+        it('apply the plugin with schema relative path rise an exception', function(){
 
             var PersonSchema = new Schema({
                 name: String
@@ -44,8 +44,93 @@ describe('Loading plugin', function(){
                     jsonschema:  './fixtures/person.json'
                 });
             }
+            expect(t).to.throw(Error);
+
+        });
+
+        it('apply the plugin with schema object works', function(){
+
+            var PersonSchema = new Schema({
+                name: String
+            });
+            function t(){
+                PersonSchema.plugin(JsonSchemaValidation, {
+                    jsonschema:  require(__dirname + '/fixtures/person.json')
+                });
+            }
             expect(t).to.not.throw(Error);
 
+        });
+
+        describe('with a model', function(){
+
+            var PersonSchema,
+                Person;
+
+            before('building the model', function(){
+                PersonSchema = new Schema({
+                    name: String
+                });
+                PersonSchema.plugin(JsonSchemaValidation, {
+                    jsonschema:  __dirname + '/fixtures/person.json'
+                });
+                
+                Person = mongoose.model('Person', PersonSchema);
+            });
+
+            it('save well built people', function(done){
+                var p = new Person({name: 'Edward'});
+                p.save(done);
+            });
+
+            it('raise an error with bad built people', function(done){
+                var p = new Person({name: ''});
+                p.save(function(err){
+                    expect(err).to.be.ok;
+                    done();
+                });
+            });
+        
+        });
+
+        describe('with a model with additional validators', function(){
+
+            var PersonSchema,
+                Person,
+                CustomError;
+
+            before('creating a custom error class',function(){
+                CustomError = function(){
+                    Error.apply(this,Array.prototype.slice.call(arguments));
+                };
+                util.inherits(Error, CustomError);
+            });
+
+            before('building the model', function(){
+                
+                PersonSchema = new Schema({
+                    name: String
+                });
+                PersonSchema.plugin(JsonSchemaValidation, {
+                    jsonschema:  __dirname + '/fixtures/person.json'
+                });
+                
+                Person = mongoose.model('Person', PersonSchema);
+            });
+
+            it('save well built people', function(done){
+                var p = new Person({name: 'Edward'});
+                p.save(done);
+            });
+
+            it('raise an error with bad built people', function(done){
+                var p = new Person({name: ''});
+                p.save(function(err){
+                    expect(err).to.be.ok;
+                    done();
+                });
+            });
+        
         });
         
     });

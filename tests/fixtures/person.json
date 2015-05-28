@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "_id": {
+            "type": "object"
+        },
         "name": {
             "type": "string",
             "minLength": 1
