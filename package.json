@@ -13,6 +13,13 @@
   "author": "Fabrizio Ruggeri <fabrizio.ruggeri@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^3.9.3",
     "tv4": "^1.1.9"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "grunt": "^0.4.5",
+    "grunt-mocha-cov": "^0.4.0",
+    "mongoose": "^4.0.3"
   }
 }
