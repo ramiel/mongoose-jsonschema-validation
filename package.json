@@ -22,5 +22,15 @@
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-mocha-cov": "^0.4.0",
     "mongoose": "^4.0.3"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "lib"
+      ],
+      "data-cover-never": [
+        "node_modules"
+      ]
+    }
   }
 }
