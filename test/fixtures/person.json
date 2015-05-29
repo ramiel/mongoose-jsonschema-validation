@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "title": "Person schema",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "_id": {
+            "type": "object"
+        },
+        "name": {
+            "type": "string",
+            "minLength": 1
+        }
+    },
+    "additionalProperties": false,
+    "required": ["name"]
+}
