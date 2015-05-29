@@ -1,25 +1,11 @@
 {
-  "name": "mongoose-jsonschema-validation",
-  "version": "0.0.1",
-  "description": "Validate your mongoose models through a JSON schema",
-  "repository": "https://github.com/ramiel/mongoose-jsonschema-validation.git",
-  "main": "index.js",
-  "scripts": {
-    "test": "grunt test"
-  },
-  "keywords": [
-    "mongoose"
-  ],
-  "author": "Fabrizio Ruggeri <fabrizio.ruggeri@gmail.com>",
-  "license": "ISC",
-  "dependencies": {
-    "lodash": "^3.9.3",
-    "tv4": "^1.1.9"
+  "engines": {
+    "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
-    "grunt": "^0.4.5",
-    "grunt-mocha-cov": "^0.4.0",
-    "mongoose": "^4.0.3"
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }
