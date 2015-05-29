@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     JsonSchemaValidation = require('../index'),
-    expect = require('chai').expect;
+    expect = require('chai').expect,
+    util = require('util');
 
 var configuration,
     configuration_file = process.env.MONGOOSE_JSONSCHEMA_CONFIG || '../test-connection.json';
@@ -103,30 +104,39 @@ describe('Loading plugin', function(){
                 CustomError = function(){
                     Error.apply(this,Array.prototype.slice.call(arguments));
                 };
-                util.inherits(Error, CustomError);
+                util.inherits(CustomError, Error);
             });
 
             before('building the model', function(){
                 
                 PersonSchema = new Schema({
-                    name: String
+                    name: {type: String, match: /^a.*/i}
                 });
                 PersonSchema.plugin(JsonSchemaValidation, {
-                    jsonschema:  __dirname + '/fixtures/person.json'
+                    jsonschema:  __dirname + '/fixtures/person.json',
+                    errorClass: CustomError
                 });
                 
-                Person = mongoose.model('Person', PersonSchema);
+                Person = mongoose.model('Person2', PersonSchema);
             });
 
             it('save well built people', function(done){
-                var p = new Person({name: 'Edward'});
+                var p = new Person({name: 'Albert'});
                 p.save(done);
             });
 
-            it('raise an error with bad built people', function(done){
+            it('raise a ValidationError with bad built people (internal validation)', function(done){
+                var p = new Person({name: 'Edward'});
+                p.save(function(err){
+                    expect(err).to.be.ok.and.to.be.instanceOf(mongoose.Error.ValidationError);
+                    done();
+                });
+            });
+
+            it('raise a CustomError with bad built people', function(done){
                 var p = new Person({name: ''});
                 p.save(function(err){
-                    expect(err).to.be.ok;
+                    expect(err).to.be.ok.and.to.be.instanceOf(CustomError);
                     done();
                 });
             });
