@@ -1,3 +1,4 @@
+/* jshint expr: true */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     JsonSchemaValidation = require('../index'),
