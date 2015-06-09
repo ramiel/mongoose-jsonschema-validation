@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       coverage: {
         options: {
           coveralls: {
-            repoToken: '0aRlqM9q5jCD6L0Gnjx0sxmNHT5dI23aC'
+            repoToken: 'OFVnkJEPrVPyAaQ1ZGPjuiK7rYAMg4uYy'
           }
         }
       },

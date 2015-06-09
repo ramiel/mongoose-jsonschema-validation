@@ -5,6 +5,10 @@ var mongoose = require('mongoose'),
     expect = require('chai').expect,
     util = require('util');
 
+if(process.env.TRAVIS){
+    process.env.MONGOOSE_JSONSCHEMA_CONFIG = '../test-travis.json';
+}
+
 var configuration,
     configuration_file = process.env.MONGOOSE_JSONSCHEMA_CONFIG || '../test-connection.json';
 

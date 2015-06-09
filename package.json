@@ -8,7 +8,10 @@
     "test": "grunt test"
   },
   "keywords": [
-    "mongoose"
+    "mongoose",
+    "json",
+    "schema",
+    "validation"
   ],
   "author": "Fabrizio Ruggeri <fabrizio.ruggeri@gmail.com>",
   "license": "ISC",
