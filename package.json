@@ -1,6 +1,6 @@
 {
   "name": "mongoose-jsonschema-validation",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Validate your mongoose models through a JSON schema",
   "repository": "https://github.com/ramiel/mongoose-jsonschema-validation.git",
   "main": "index.js",
