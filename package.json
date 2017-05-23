@@ -16,7 +16,7 @@
   "author": "Fabrizio Ruggeri <fabrizio.ruggeri@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^3.9.3",
+    "lodash.assignin": "^4.2.0",
     "tv4": "^1.1.9"
   },
   "devDependencies": {
